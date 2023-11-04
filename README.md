@@ -1,2 +1,4 @@
 # ctf-x-forwarded-for
-Simple python script to call a website with a specific x-forwarded-for header.  Used on Who am I challenge.
+Simple python script to call a website with a specific x-forwarded-for header.  Used on Who am I challenge at the Hackers Teaching Hackers (HTH) CTF 2023
+
+This was a series of 3 challenges.  When you initially accessed the website it would display a page with your source IP address and the goal was to bypass the WAF.  Using the X-Forwarded-For header with 127.0.0.1 intially gave you a different IP than your source.  Using that IP you could then get a second unique IP and populating the X-Forwarded-For value with that IP would get you the first flag.  The second challenge was similar except you needed to take the first flag and enter it in the X-Forwarded-For value to get the next IP and after 5 attempts you would get the next flag.  The 3rd challenge again followed the same pattern but after 100 tries we still could not get the flag.  This script was written to continuously make calls to the website using the IP returned in the body of the response.  Eventually after hundreds of calls the 3rd flag was displayed.
